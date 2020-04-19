@@ -1,0 +1,20 @@
+apiVersion: cert-manager.io/v1alpha2
+kind: Certificate
+metadata:
+    name: ca5h-me-tls
+spec:
+    secretName: ca5h-me
+    issuerRef:
+        name: letsencrypt-prod
+        kind: ClusterIssuer
+    commonName: ca5h.me
+    dnsNames:
+        - ca5h.me
+        - www.ca5h.me
+    acme:
+        config:
+            - http01:
+                ingressClass: nginx
+              domains:
+                - ca5h.me
+                - www.ca5h.me  
